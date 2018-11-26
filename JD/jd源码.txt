@@ -1,0 +1,263 @@
+import pandas
+import numpy
+import datetime
+import math
+
+# 初始化信息
+def init(context):
+    #滑点默认值2‰
+    context.set_slippage(0.002)
+    #交易费默认值0.25‰
+    context.set_commission(0.0025)
+    #基准默认沪深300
+    context.set_benchmark("000300.SH")
+    #context.set_benchmark("000905.SH")
+    #context.set_benchmark("399333.SH")
+
+#def init(context):
+    #调仓
+    task.daily(rebalance,time_rule=market_open(minute=1))
+    #task.weekly()
+    #task.monthly(rebalance,1)
+#每天开盘前进行选股    
+def before_trade(context):
+    context.stock_list = choose_stock()    
+    
+#策略买入信号函数
+
+def buy_stock(context,stock ,data_dict):
+    #max_position = 0.618/8  #最大买入仓位 
+    stock_buy_num =5 #最多买入5支股票
+    max_position =0.618 #0.618/(8*1.618)  #最大买入仓位 
+     #max_position = 0.618/(stock_buy_num*2)  #最大买入仓位 
+    stock_percentage = 0.0618  #0.618/(8*1.618)  #每支股票买入的最大仓位
+   
+    if len(context.portfolio.positions) < stock_buy_num:
+       cash = context.portfolio.cash #当前投资当前投资组合剩余现金
+       portfolio_value = context.portfolio.portfolio_value  #总资产包含剩余现金与市场价值
+       quantity = context.portfolio.positions[stock].quantity   #总股数
+       price_value = data_dict[stock].last   #新价格 
+       p_value = price_value*quantity  #价格*股数=总市值
+       stock_position = p_value/portfolio_value #*0.618 #总市值/总资产 
+       if p_value/portfolio_value < max_position and cash/portfolio_value > max_position:
+         order_target_percent(stock, max_position) #*stock_percentage) #买入股票
+         order_target_percent(stock, stock_percentage) #买入股票
+         
+#策略卖出信号函数
+
+def sell_stock(context,stock_list,data_dict):
+    for stock in list(context.portfolio.positions.keys()):
+        if not (stock in stock_list):
+           order_target_value(stock,0)  #如果不在股票列表中则全部卖出
+           print(context.portfolio.positions[stock])
+           
+           # 卖出逻辑            
+def clear_position(context, data_dict):
+    for security_code in context.portfolio.positions.keys():
+        current_hold_security = context.portfolio.positions[security_code]
+        current_hold_security_cost = get_cost(current_hold_security)
+        current_security_price = data_dict[security_code].last
+        current_security_high = data_dict[security_code].high
+        current_security = data_dict[security_code]
+        
+
+# 日或分钟历史数据,实时数据更新
+
+def handle_data(context, data_dict):
+    #option_stock(context,data_dict)
+    pass
+
+#操作股票
+def option_stock(context,data_dict):
+    stock_list = context.stock_list
+    sell_stock(context,stock_list,data_dict)  #先卖出股票再买入
+    for stock in stock_list:
+        buy_stock(context,stock,data_dict)  #买入股票
+
+def before_trade(context):
+    stock_num = 10
+    #每日选股
+    dataframe = get_fundamentals(
+        query(
+            fundamentals.financial_analysis_indicator.earnings_per_share,
+            fundamentals.equity_valuation_indicator.pe_ratio,
+            fundamentals.financial_analysis_indicator.return_on_asset,
+        )
+        .filter(
+           fundamentals.equity_valuation_indicator.pe_ratio<200
+        )
+        .filter(
+           fundamentals.financial_analysis_indicator.earnings_per_share>0.309
+        )
+        .filter(
+           fundamentals.financial_analysis_indicator.return_on_asset>0.0618
+        )
+        #.filter(
+         #  fundamentals.equity_valuation_indicator.a_share_market_val_2   #总市值
+        #)
+        .filter(
+         1*100000000> fundamentals.equity_valuation_indicator.a_share_market_val_2 < 2000*100000000  #总市值200亿
+        )
+        .order_by(
+           fundamentals.equity_valuation_indicator.a_share_market_val_2.asc() #<100*100000000
+        ).limit(
+            10
+        )
+    )
+    context.dataframe = dataframe
+    context.stocks = context.dataframe.columns.values
+    logger.info(context.stocks)
+    logger.info(dataframe)
+
+     
+#调仓
+def rebalance(context,data_dict):
+    for stock in context.portfolio.positions:
+        if stock not in context.dataframe:
+            order_target_percent(stock, 0)
+    if len(context.stocks) == 0:
+        weight = 0
+    else:
+        weight = 1
+    for stock in context.dataframe:
+        if weight != 0 and stock in context.dataframe:
+            order_target_percent(stock,(weight/20)*1.618)
+
+# 过滤掉退市的，ST的
+def filterate_special_list(context, asc_security_list):
+    for security_code in asc_security_list:
+        if is_st(security_code) or is_delisting(security_code):
+            continue
+        else:
+            context.candidate_security.append(security_code)  
+  
+  #过滤ST、新股的一些代码如下
+#去除st  新股 
+def buy_lists(stock_list,context,data_dict):
+    stock_list = []
+    for stock in stock_list:
+        if up_day(stock,context) > 180:  #新股大于80天 
+           if not is_buy_stock(stock,data_dict):
+              if len(new_list) < 5000 :   #LIST里面存储的股票
+                 new_list.append(stock)
+    return stock_list   
+    
+#去除不需要的股票,停牌、退市、st创业版股票 
+#如果是停牌、退市、st创业版股票，则返回True
+def is_buy_stock(stock,data_dict):
+    result = False
+    # 0可以交易；1停牌无法交易
+    if data_dict[stock].sf == 1:
+       result = True
+    # 去除退市的
+    elif is_delisting(stock):
+       result = True
+    # 去除st
+    elif is_st(stock):
+       result = True
+    return result
+    
+#返回上市时到现在一共多少天  
+def up_day(stock,context):
+    up_time = get_securities (stock).listed_date
+    today = context.now
+    print(up_time,today)
+    days = (today - up_time).days #上市距离现在的时间
+    return days  
+# 简单的判断股灾(昨天大盘收盘跌幅高于2%)
+def is_disaster(context):
+    now = context.now
+    yesterday_open = get_history(1,'1d','open')['000300.SH'].values
+    yesterday_close = get_history(1,'1d','close')['000300.SH'].values
+    yesterday_open_1 = get_history(1,'1d','open')['000001.SH'].values
+    yesterday_close_1 = get_history(1,'1d','close')['000001.SH'].values
+    
+    range_of_price_drop = (yesterday_close-yesterday_open)/yesterday_open # 跌幅
+    range_of_price_drop_1 = (yesterday_close_1-yesterday_open_1)/yesterday_open
+        # 跌幅
+    
+    result = 0
+    
+    if (range_of_price_drop <= -0.01 or range_of_price_drop_1 <= -0.01): # 跌幅超过2%
+        if context.last_disater is not None:
+            if (now - context.last_disater).days <= 5:
+                result = 1
+            else:
+                result = 0
+        else:
+            pass
+        context.last_disater = now
+
+    return result
+        
+# 对所有股票进行平仓操作, 默认彻底清仓
+def thorough_clear_position(context):
+    for security_code in context.portfolio.positions.keys():
+        order_target_value(security_code, 0)
+        
+ #判断成本价和持仓天数更新：
+    for stk in context.portfolio.positions.keys():
+            if context.portfolio.positions[stk].quantity==0:
+                continue
+            else:
+                stkInfo = {}
+                stkInfo['avgCost'] = context.portfolio.positions[stk].bought_value/context.portfolio.positions[stk].bought_quantity
+                stkInfo['holdDays'] = 1
+                context.curPflInfo[stk] = stkInfo   
+                
+    #    context.set_benchmark("000001.SZ") 
+    #这里选了000001.SZ作为参考基准，大家可以根据自己的不同需要进行修改；
+    #context.buyList = []
+    #制定了一个买股的集合单子；存放在buyList里面的就是我们选出来后的要买的股
+    #context.curPflInfo = {}
+    #curPflInfo 的key为当前持仓股票，value为股票信息  
+    #如 context.curPflInfo = {'000001.XSHE':{'time':1,'avgCost':9.5}}
+    #avgCost是平均成本
+    #context.holdSize = 10
+    #持仓数
+    #context.weight = 0
+    #新买个股的初始仓位 每天开盘前初始化
+    context.stpPftPrice = 0.05
+    #止盈，可以是值，也可以是百分比制；
+    context.stpLosRate = -0.05
+    #止损，和止盈同样的道理
+    #context.orderList = []
+    #下单集合        
+def filterStAndPaused(stkList,data_dict):
+    #过滤st和停牌股票
+    stkList = [stk for stk in stkList if not is_st(stk) and data_dict[stk].sf==0]
+    return stkList
+def filterLimitStk(stk,data_dict,context):
+    #过滤涨跌停股票
+    yesterday = get_history(2,'1d', 'close')[stk].values[-1]
+    zt = round(1.10 * yesterday,2)
+    dt = round(0.97 * yesterday,2)
+    if dt < data_dict[stk].last < zt :
+        return True
+    else : 
+        return False    
+                
+    popList=[]
+    for stk in context.curPflInfo.keys():
+            if (data_dict[stk].close / context.curPflInfo[stk]['avgCost']) -1  >= context.stpPftPrice:
+                #如果 当前价和成本价的差价大于预定值 则卖出
+                order_target_value(stk, 0)
+                print ('止盈卖出 :', stk)
+                popList.append(stk)
+    for stk in popList:
+            context.curPflInfo.pop(stk)
+            
+
+    popList = []
+    for stk in context.curPflInfo.keys():
+            if (context.curPflInfo[stk]['avgCost']==0):
+                popList.append(stk)
+                continue
+            if (data_dict[stk].close / context.curPflInfo[stk]['avgCost']) -1 <= context.stpLosRate:
+                #如果当前亏损大于预定值 则止损卖出
+                order_target_value(stk, 0)
+                if now.hour ==14 and now.minute == 55 :
+                    print ('止损卖出 :', stk)
+                popList.append(stk)
+    for stk in popList:
+            context.curPflInfo.pop(stk)       
