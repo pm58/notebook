@@ -1,0 +1,623 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>交互工具 &mdash; Hikyuu Quant Framework 1.0.3 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+
+  
+    <link rel="stylesheet" href="https://media.readthedocs.org/css/sphinx_rtd_theme.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Hikyuu Quant Framework 1.0.3 documentation" href="../index.html"/>
+        <link rel="next" title="基础设施" href="../base/index.html"/>
+        <link rel="prev" title="新手入门" href="../quickstart.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+
+<!-- RTD Extra Head -->
+
+<!-- 
+Always link to the latest version, as canonical.
+http://docs.readthedocs.org/en/latest/canonical.html
+-->
+<link rel="canonical" href="index.html" />
+
+<link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
+
+<script type="text/javascript" src="../_static/readthedocs-data.js"></script>
+
+<!-- Add page-specific data, which must exist in the page js, not global -->
+<script type="text/javascript">
+READTHEDOCS_DATA['page'] = 'interactive/index' 		
+READTHEDOCS_DATA['source_suffix'] = '.rst'
+</script>
+
+<script type="text/javascript" src="../_static/readthedocs-dynamic-include.js"></script>
+
+<!-- end RTD <extrahead> --></head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Hikyuu Quant Framework
+          
+
+          
+          </a>
+
+          
+            
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Hikyuu 简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">安装步骤</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">新手入门</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="index.html#">交互工具</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index.html#id2">绘制组合窗口</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#id3">绘制图形的便捷函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#k">绘制K线、指标、信号等</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#id4">内建示例</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../base/index.html">基础设施</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stock_manager.html">证券管理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../indicator/index.html">技术指标</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../trade_manage/trade_manage.html">交易管理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../trade_sys/trade_sys.html">交易系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer.html">C++ 开发者指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference.html">参考资料</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Hikyuu Quant Framework</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>交互工具</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/interactive/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>交互工具<a class="headerlink" href="index.html#id1" title="Permalink to this headline">¶</a></h1>
+<p>Hikyuu是研究系统交易的Python量化框架，可以在其基础上构建自己的客户端程序。而Hikyuu库本身自带一个交互式工具，可以在Python Shell环境下进行探索，可以从在Python shell中使用 “from hikyuu.interactive.interactive” 引入该工具。该工具主要提供基于 matplotlib 的图形绘制函数，便于在交互式环境下绘制K线、指标、信号等。</p>
+<p>使用 matplotlib 绘制图形，必须了解 matplotlib 绘图中的两个基本对象：figure、axes。窗口（figure）是坐标轴（axes）对象的容器，绘图时首先需指定窗口，在窗口中绘制相应的坐标轴，然后在坐标轴中绘制图形。在 matplotlib 中绘制图形需要指定图形在哪个坐标轴中进行绘制。当绘图函数中没有指定坐标轴时，将默认使用当前的坐标轴，如果不存在任何一个坐标轴时，matplotlib 将创建自动创建一个窗口及其包含的坐标轴。</p>
+<p>绘图的详细示例：</p>
+<p><a class="reference external" href="http://nbviewer.jupyter.org/github/fasiondog/hikyuu_examples/blob/master/005-Drawplot.ipynb?flush_cache=True">http://nbviewer.jupyter.org/github/fasiondog/hikyuu_examples/blob/master/005-Drawplot.ipynb?flush_cache=True</a></p>
+<div class="section" id="id2">
+<h2>绘制组合窗口<a class="headerlink" href="index.html#id2" title="Permalink to this headline">¶</a></h2>
+<p>创建组合窗口的快捷函数,返回相应的 axes 对象或tuple。</p>
+<dl class="function">
+<dt id="create_figure">
+<code class="descname">create_figure</code><span class="sig-paren">(</span><span class="optional">[</span><em>n = 1</em>, <em>figsize = (10</em>, <em>8)</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="index.html#create_figure" title="Permalink to this definition">¶</a></dt>
+<dd><p>生成含有指定坐标轴数量的窗口，最大只支持4个坐标轴。</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>n</strong> (<em>int</em>) &#8211; 坐标轴数量</li>
+<li><strong>figsize</strong> &#8211; (宽, 高)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">(ax1, ax2, ...) 根据指定的坐标轴数量而定，超出[1,4]个坐标轴时，返回None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="id3">
+<h2>绘制图形的便捷函数<a class="headerlink" href="index.html#id3" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="ax_set_locator_formatter">
+<code class="descname">ax_set_locator_formatter</code><span class="sig-paren">(</span><em>axes</em>, <em>dates</em>, <em>typ</em><span class="sig-paren">)</span><a class="headerlink" href="index.html#ax_set_locator_formatter" title="Permalink to this definition">¶</a></dt>
+<dd><p>设置指定坐标轴的日期显示，根据指定的K线类型优化X轴坐标显示</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>axes</strong> &#8211; 指定的坐标轴</li>
+<li><strong>dates</strong> &#8211; Datetime构成可迭代序列</li>
+<li><strong>typ</strong> (<a class="reference internal" href="../stock_manager.html#hikyuu.KQuery.KType" title="hikyuu.KQuery.KType"><em>KQuery.KType</em></a>) &#8211; K线类型</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="adjust_axes_show">
+<code class="descname">adjust_axes_show</code><span class="sig-paren">(</span><em>axeslist</em><span class="sig-paren">)</span><a class="headerlink" href="index.html#adjust_axes_show" title="Permalink to this definition">¶</a></dt>
+<dd><p>用于调整上下紧密相连的坐标轴显示时，其上一坐标轴最小值刻度和下一坐标轴最大值刻度显示重叠的问题</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>axeslist</strong> &#8211; 上下相连的坐标轴列表 (ax1,ax2,...)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="ax_draw_macd">
+<code class="descname">ax_draw_macd</code><span class="sig-paren">(</span><em>axes</em>, <em>kdata</em><span class="optional">[</span>, <em>n1=12</em>, <em>n2=26</em>, <em>n3=9</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="index.html#ax_draw_macd" title="Permalink to this definition">¶</a></dt>
+<dd><p>绘制MACD</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>axes</strong> &#8211; 指定的坐标轴</li>
+<li><strong>kdata</strong> (<a class="reference internal" href="../base/datatype.html#hikyuu.KData" title="hikyuu.KData"><em>KData</em></a>) &#8211; KData</li>
+<li><strong>n1</strong> (<em>int</em>) &#8211; 指标 MACD 的参数1</li>
+<li><strong>n2</strong> (<em>int</em>) &#8211; 指标 MACD 的参数2</li>
+<li><strong>n3</strong> (<em>int</em>) &#8211; 指标 MACD 的参数3</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="ax_draw_macd2">
+<code class="descname">ax_draw_macd2</code><span class="sig-paren">(</span><em>axes</em>, <em>ref</em>, <em>kdata</em>, <em>n1=12</em>, <em>n2=26</em>, <em>n3=9</em><span class="sig-paren">)</span><a class="headerlink" href="index.html#ax_draw_macd2" title="Permalink to this definition">¶</a></dt>
+<dd><p>绘制MACD。
+当BAR值变化与参考序列ref变化不一致时，显示为灰色，
+当BAR和参考序列ref同时上涨，显示红色
+当BAR和参考序列ref同时下跌，显示绿色</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>axes</strong> &#8211; 指定的坐标轴</li>
+<li><strong>ref</strong> &#8211; 参考序列，EMA</li>
+<li><strong>kdata</strong> (<a class="reference internal" href="../base/datatype.html#hikyuu.KData" title="hikyuu.KData"><em>KData</em></a>) &#8211; KData</li>
+<li><strong>n1</strong> (<em>int</em>) &#8211; 指标 MACD 的参数1</li>
+<li><strong>n2</strong> (<em>int</em>) &#8211; 指标 MACD 的参数2</li>
+<li><strong>n3</strong> (<em>int</em>) &#8211; 指标 MACD 的参数3</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="k">
+<h2>绘制K线、指标、信号等<a class="headerlink" href="index.html#k" title="Permalink to this headline">¶</a></h2>
+<p>以下函数已设为相应类型对象的 plot 函数，如 KData kdata 可直接调用 kdata.plot()，等同于没有第一个参数的 kplot()</p>
+<dl class="function">
+<dt id="kplot">
+<code class="descname">kplot</code><span class="sig-paren">(</span><em>kdata</em><span class="optional">[</span>, <em>new=True</em>, <em>axes=None</em>, <em>colorup='r'</em>, <em>colordown='g'</em>, <em>width=0.6</em>, <em>alpha=1.0</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="index.html#kplot" title="Permalink to this definition">¶</a></dt>
+<dd><p>绘制K线图</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>kdata</strong> (<a class="reference internal" href="../base/datatype.html#hikyuu.KData" title="hikyuu.KData"><em>KData</em></a>) &#8211; K线数据</li>
+<li><strong>new</strong> (<em>bool</em>) &#8211; 是否在新窗口中显示，只在没有指定axes时生效</li>
+<li><strong>axes</strong> &#8211; 指定的坐标轴</li>
+<li><strong>colorup</strong> &#8211; the color of the rectangle where close &gt;= open</li>
+<li><strong>colordown</strong> &#8211; the color of the rectangle where close &lt; open</li>
+<li><strong>width</strong> &#8211; fraction of a day for the rectangle width</li>
+<li><strong>alpha</strong> &#8211; the rectangle alpha level, 透明度(0.0~1.0) 1.0为不透明</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="mkplot">
+<code class="descname">mkplot</code><span class="sig-paren">(</span><em>kdata</em><span class="optional">[</span>, <em>new=True</em>, <em>axes=None</em>, <em>colorup='r'</em>, <em>colordown='g'</em>, <em>ticksize=3</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="index.html#mkplot" title="Permalink to this definition">¶</a></dt>
+<dd><p>绘制美式K线图</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>kdata</strong> (<a class="reference internal" href="../base/datatype.html#hikyuu.KData" title="hikyuu.KData"><em>KData</em></a>) &#8211; K线数据</li>
+<li><strong>new</strong> (<em>bool</em>) &#8211; 是否在新窗口中显示，只在没有指定axes时生效</li>
+<li><strong>axes</strong> &#8211; 指定的坐标轴</li>
+<li><strong>colorup</strong> &#8211; the color of the lines where close &gt;= open</li>
+<li><strong>colordown</strong> &#8211; the color of the lines where close &lt; open</li>
+<li><strong>ticksize</strong> &#8211; open/close tick marker in points</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="iplot">
+<code class="descname">iplot</code><span class="sig-paren">(</span><em>indicator</em><span class="optional">[</span>, <em>new=True</em>, <em>axes=None</em>, <em>legend_on=False</em>, <em>text_on=False</em>, <em>text_color='k'</em>, <em>zero_on=False</em>, <em>label=None</em>, <em>*args</em>, <em>**kwargs</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="index.html#iplot" title="Permalink to this definition">¶</a></dt>
+<dd><p>绘制indicator曲线图</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>indicator</strong> (<em>Indicator</em>) &#8211; indicator实例</li>
+<li><strong>new</strong> &#8211; 是否在新窗口中显示，只在没有指定axes时生效</li>
+<li><strong>axes</strong> &#8211; 指定的坐标轴</li>
+<li><strong>legend_on</strong> &#8211; 是否打开图例</li>
+<li><strong>text_on</strong> &#8211; 是否在左上角显示指标名称及其参数</li>
+<li><strong>text_color</strong> &#8211; 指标名称解释文字的颜色，默认为黑色</li>
+<li><strong>zero_on</strong> &#8211; 是否需要在y=0轴上绘制一条直线</li>
+<li><strong>label</strong> (<em>str</em>) &#8211; label显示文字信息，text_on 及 legend_on 为 True 时生效</li>
+<li><strong>args</strong> &#8211; pylab plot参数</li>
+<li><strong>kwargs</strong> &#8211; pylab plot参数，如：marker（标记类型）、markerfacecolor（标记颜色）、markeredgecolor（标记的边缘颜色）</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="ibar">
+<code class="descname">ibar</code><span class="sig-paren">(</span><em>indicator</em><span class="optional">[</span>, <em>new=True</em>, <em>axes=None</em>, <em>legend_on=False</em>, <em>text_on=False</em>, <em>text_color='k'</em>, <em>label=None</em>, <em>width=0.4</em>, <em>color='r'</em>, <em>edgecolor='r'</em>, <em>zero_on=False</em>, <em>*args</em>, <em>**kwargs</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="index.html#ibar" title="Permalink to this definition">¶</a></dt>
+<dd><p>绘制indicator柱状图</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>indicator</strong> (<em>Indicator</em>) &#8211; Indicator实例</li>
+<li><strong>axes</strong> &#8211; 指定的坐标轴</li>
+<li><strong>new</strong> &#8211; 是否在新窗口中显示，只在没有指定axes时生效</li>
+<li><strong>legend_on</strong> &#8211; 是否打开图例</li>
+<li><strong>text_on</strong> &#8211; 是否在左上角显示指标名称及其参数</li>
+<li><strong>text_color</strong> &#8211; 指标名称解释文字的颜色，默认为黑色</li>
+<li><strong>label</strong> (<em>str</em>) &#8211; label显示文字信息，text_on 及 legend_on 为 True 时生效</li>
+<li><strong>zero_on</strong> &#8211; 是否需要在y=0轴上绘制一条直线</li>
+<li><strong>width</strong> &#8211; Bar的宽度</li>
+<li><strong>color</strong> &#8211; Bar的颜色</li>
+<li><strong>edgecolor</strong> &#8211; Bar边缘颜色</li>
+<li><strong>args</strong> &#8211; pylab plot参数</li>
+<li><strong>kwargs</strong> &#8211; pylab plot参数</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="sgplot">
+<code class="descname">sgplot</code><span class="sig-paren">(</span><em>sg</em><span class="optional">[</span>, <em>new = True</em>, <em>axes = None</em>, <em>style = 1</em>, <em>kdata = None</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="index.html#sgplot" title="Permalink to this definition">¶</a></dt>
+<dd><p>绘制买入/卖出信号</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>sg</strong> (<a class="reference internal" href="../trade_sys/signal.html#hikyuu.trade_sys.SignalBase" title="hikyuu.trade_sys.SignalBase"><em>SignalBase</em></a>) &#8211; 信号指示器</li>
+<li><strong>new</strong> &#8211; 仅在未指定axes的情况下生效，当为True时，创建新的窗口对象并在其中进行绘制</li>
+<li><strong>axes</strong> &#8211; 指定在那个轴对象中进行绘制</li>
+<li><strong>style</strong> &#8211; 1 | 2 信号箭头绘制样式</li>
+<li><strong>kdata</strong> (<a class="reference internal" href="../base/datatype.html#hikyuu.KData" title="hikyuu.KData"><em>KData</em></a>) &#8211; 指定的KData（即信号发生器的交易对象），如该值为None，则认为该信号发生器已经指定了交易对象，否则，使用该参数作为交易对象</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="cnplot">
+<code class="descname">cnplot</code><span class="sig-paren">(</span><em>cn</em><span class="optional">[</span>, <em>new=True</em>, <em>axes=None</em>, <em>kdata=None</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="index.html#cnplot" title="Permalink to this definition">¶</a></dt>
+<dd><p>绘制系统有效条件</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>cn</strong> (<a class="reference internal" href="../trade_sys/condition.html#hikyuu.trade_sys.ConditionBase" title="hikyuu.trade_sys.ConditionBase"><em>ConditionBase</em></a>) &#8211; 系统有效条件</li>
+<li><strong>new</strong> &#8211; 仅在未指定axes的情况下生效，当为True时，创建新的窗口对象并在其中进行绘制</li>
+<li><strong>axes</strong> &#8211; 指定在那个轴对象中进行绘制</li>
+<li><strong>kdata</strong> (<a class="reference internal" href="../base/datatype.html#hikyuu.KData" title="hikyuu.KData"><em>KData</em></a>) &#8211; 指定的KData，如该值为None，则认为该系统有效条件已经指定了交易对象，否则，使用该参数作为交易对象</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="sysplot">
+<code class="descname">sysplot</code><span class="sig-paren">(</span><em>sys</em><span class="optional">[</span>, <em>new=True</em>, <em>axes=None</em>, <em>style=1</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="index.html#sysplot" title="Permalink to this definition">¶</a></dt>
+<dd><p>绘制系统实际买入/卖出信号</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>sys</strong> (<em>SystemBase</em>) &#8211; 系统实例</li>
+<li><strong>new</strong> &#8211; 仅在未指定axes的情况下生效，当为True时，创建新的窗口对象并在其中进行绘制</li>
+<li><strong>axes</strong> &#8211; 指定在那个轴对象中进行绘制</li>
+<li><strong>style</strong> &#8211; 1 | 2 信号箭头绘制样式</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="id4">
+<h2>内建示例<a class="headerlink" href="index.html#id4" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="vl.draw">
+<code class="descclassname">vl.</code><code class="descname">draw</code><span class="sig-paren">(</span><em>stock</em>, <em>query=Query(-130)</em>, <em>ma1_n=5</em>, <em>ma2_n=10</em>, <em>ma3_n=20</em>, <em>ma4_n=60</em>, <em>ma5_n=100</em>, <em>ma_type=&quot;SMA&quot;</em>, <em>vma1_n=5</em>, <em>vma2_n=10</em><span class="sig-paren">)</span><a class="headerlink" href="index.html#vl.draw" title="Permalink to this definition">¶</a></dt>
+<dd><p>绘制普通K线图 + 成交量（成交金额）</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="vl.draw2">
+<code class="descclassname">vl.</code><code class="descname">draw2</code><span class="sig-paren">(</span><em>stock</em>, <em>query=Query(-130)</em>, <em>ma1_n=7</em>, <em>ma2_n=20</em>, <em>ma3_n=30</em>, <em>ma4_n=42</em>, <em>ma5_n=100</em>, <em>vma1_n=5</em>, <em>vma2_n=10</em><span class="sig-paren">)</span><a class="headerlink" href="index.html#vl.draw2" title="Permalink to this definition">¶</a></dt>
+<dd><p>绘制普通K线图 + 成交量（成交金额）+ MACD</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="el.draw">
+<code class="descclassname">el.</code><code class="descname">draw</code><span class="sig-paren">(</span><em>stock</em>, <em>query=QueryByIndex(-130)</em>, <em>ma_n=22</em>, <em>ma_w='auto'</em>, <em>vigor_n=13</em><span class="sig-paren">)</span><a class="headerlink" href="index.html#el.draw" title="Permalink to this definition">¶</a></dt>
+<dd><p>绘制亚历山大.艾尔德交易系统图形。参见 <a class="reference internal" href="../reference.html#book2" id="id5">[BOOK2]</a></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kf.draw">
+<code class="descclassname">kf.</code><code class="descname">draw</code><span class="sig-paren">(</span><em>stock</em>, <em>query=Query(-130)</em>, <em>n=10</em>, <em>filter_n=20</em>, <em>filter_p=0.1</em>, <em>sg_type = &quot;CROSS&quot;</em>, <em>show_high_low=False</em>, <em>arrow_style=1</em><span class="sig-paren">)</span><a class="headerlink" href="index.html#kf.draw" title="Permalink to this definition">¶</a></dt>
+<dd><p>绘制佩里.J.考夫曼（Perry J.Kaufman） 自适应移动平均系统(AMA)。参见 <a class="reference internal" href="../reference.html#book1" id="id6">[BOOK1]</a></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kf.draw2">
+<code class="descclassname">kf.</code><code class="descname">draw2</code><span class="sig-paren">(</span><em>block</em>, <em>query=Query(-130)</em>, <em>ama1=AMA(n=10</em>, <em>fast_n=2</em>, <em>slow_n=30)</em>, <em>ama2=None</em>, <em>n=10</em>, <em>filter_n=20</em>, <em>filter_p=0.1</em>, <em>sg_type='CROSS'</em>, <em>show_high_low=True</em>, <em>arrow_style=1</em><span class="sig-paren">)</span><a class="headerlink" href="index.html#kf.draw2" title="Permalink to this definition">¶</a></dt>
+<dd><p>绘制佩里.J.考夫曼（Perry J.Kaufman） 自适应移动平均系统(AMA)。参见 <a class="reference internal" href="../reference.html#book1" id="id7">[BOOK1]</a></p>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../base/index.html" class="btn btn-neutral float-right" title="基础设施" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../quickstart.html" class="btn btn-neutral" title="新手入门" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, fasiondog，&lt;a href=&#34;http://hikyuu.org/&#34;&gt;Hikyuu&lt;/a&gt;.
+      
+        <span class="commit">
+          Revision <code>a0b7388d</code>.
+        </span>
+      
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="../index.html">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="http://readthedocs.org/projects/hikyuu/downloads/htmlzip/latest/">htmlzip</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="http://readthedocs.org/projects/hikyuu/?fromdocs=hikyuu">Project Home</a>
+          </dd>
+          <dd>
+            <a href="http://readthedocs.org/builds/hikyuu/?fromdocs=hikyuu">Builds</a>
+          </dd>
+      </dl>
+      <hr/>
+      Free document hosting provided by <a href="http://www.readthedocs.org">Read the Docs</a>.
+
+    </div>
+  </div>
+
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0.3',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="https://media.readthedocs.org/javascript/jquery/jquery-2.0.3.min.js"></script>
+      <script type="text/javascript" src="https://media.readthedocs.org/javascript/jquery/jquery-migrate-1.2.1.min.js"></script>
+      <script type="text/javascript" src="https://media.readthedocs.org/javascript/underscore.js"></script>
+      <script type="text/javascript" src="https://media.readthedocs.org/javascript/doctools.js"></script>
+      <script type="text/javascript" src="https://media.readthedocs.org/javascript/readthedocs-doc-embed.js"></script>
+
+  
+
+  
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

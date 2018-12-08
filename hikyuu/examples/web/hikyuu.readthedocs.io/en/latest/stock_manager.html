@@ -1,0 +1,1430 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>证券管理 &mdash; Hikyuu Quant Framework 1.0.3 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+
+  
+    <link rel="stylesheet" href="https://media.readthedocs.org/css/sphinx_rtd_theme.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Hikyuu Quant Framework 1.0.3 documentation" href="index.html"/>
+        <link rel="next" title="技术指标" href="indicator/index.html"/>
+        <link rel="prev" title="杂项或辅助" href="base/other_utils.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+
+<!-- RTD Extra Head -->
+
+<!-- 
+Always link to the latest version, as canonical.
+http://docs.readthedocs.org/en/latest/canonical.html
+-->
+<link rel="canonical" href="stock_manager.html" />
+
+<link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
+
+<script type="text/javascript" src="_static/readthedocs-data.js"></script>
+
+<!-- Add page-specific data, which must exist in the page js, not global -->
+<script type="text/javascript">
+READTHEDOCS_DATA['page'] = 'stock_manager' 		
+READTHEDOCS_DATA['source_suffix'] = '.rst'
+</script>
+
+<script type="text/javascript" src="_static/readthedocs-dynamic-include.js"></script>
+
+<!-- end RTD <extrahead> --></head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Hikyuu Quant Framework
+          
+
+          
+          </a>
+
+          
+            
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Hikyuu 简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">安装步骤</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">新手入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interactive/index.html">交互工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="base/index.html">基础设施</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="stock_manager.html#">证券管理</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="stock_manager.html#k">构建K线查询条件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stock_manager.html#stockmanager-block-stock">StockManager/Block/Stock</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stock_manager.html#id2">其它证券信息定义</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="indicator/index.html">技术指标</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trade_manage/trade_manage.html">交易管理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trade_sys/trade_sys.html">交易系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer.html">C++ 开发者指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">参考资料</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Hikyuu Quant Framework</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>证券管理</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/stock_manager.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>证券管理<a class="headerlink" href="stock_manager.html#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="k">
+<h2>构建K线查询条件<a class="headerlink" href="stock_manager.html#k" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="hikyuu.QueryByDate">
+<code class="descclassname">hikyuu.</code><code class="descname">QueryByDate</code><span class="sig-paren">(</span><span class="optional">[</span><em>start=None</em>, <em>end=None</em>, <em>kType=Query.DAY</em>, <em>recoverType=Query.NO_RECOVER</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="stock_manager.html#hikyuu.QueryByDate" title="Permalink to this definition">¶</a></dt>
+<dd><p>构建按日期 [start, end) 方式获取K线数据条件</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>start</strong> (<a class="reference internal" href="base/datatype.html#hikyuu.Datetime" title="hikyuu.Datetime"><em>Datetime</em></a>) &#8211; 起始日期</li>
+<li><strong>end</strong> (<a class="reference internal" href="base/datatype.html#hikyuu.Datetime" title="hikyuu.Datetime"><em>Datetime</em></a>) &#8211; 结束日期</li>
+<li><strong>kType</strong> (<a class="reference internal" href="stock_manager.html#hikyuu.KQuery.KType" title="hikyuu.KQuery.KType"><em>KQuery.KType</em></a>) &#8211; K线数据类型（如日线、分钟线等）</li>
+<li><strong>recoverType</strong> (<a class="reference internal" href="stock_manager.html#hikyuu.KQuery.RecoverType" title="hikyuu.KQuery.RecoverType"><em>KQuery.RecoverType</em></a>) &#8211; 复权类型</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">查询条件</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="stock_manager.html#hikyuu.KQuery" title="hikyuu.KQuery">KQuery</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="hikyuu.QueryByIndex">
+<em class="property">class </em><code class="descclassname">hikyuu.</code><code class="descname">QueryByIndex</code><span class="sig-paren">(</span><span class="optional">[</span><em>start=0</em>, <em>end=None</em>, <em>kType=KQuery.KType.DAT</em>, <em>recoverType=KQuery.RecoverType.NO_RECOVER</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="stock_manager.html#hikyuu.QueryByIndex" title="Permalink to this definition">¶</a></dt>
+<dd><p>构建按索引 [start, end) 方式获取K线数据条件，等同于直接使用 Query 构造</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>start</strong> (<em>ind</em>) &#8211; 起始日期</li>
+<li><strong>end</strong> (<em>ind</em>) &#8211; 结束日期</li>
+<li><strong>kType</strong> (<a class="reference internal" href="stock_manager.html#hikyuu.KQuery.KType" title="hikyuu.KQuery.KType"><em>KQuery.KType</em></a>) &#8211; K线数据类型（如日线、分钟线等）</li>
+<li><strong>recoverType</strong> (<a class="reference internal" href="stock_manager.html#hikyuu.KQuery.RecoverType" title="hikyuu.KQuery.RecoverType"><em>KQuery.RecoverType</em></a>) &#8211; 复权类型</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">查询条件</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="stock_manager.html#hikyuu.KQuery" title="hikyuu.KQuery">KQuery</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="hikyuu.Query">
+<em class="property">class </em><code class="descclassname">hikyuu.</code><code class="descname">Query</code><a class="headerlink" href="stock_manager.html#hikyuu.Query" title="Permalink to this definition">¶</a></dt>
+<dd><p>对 KQuery 的简单包装，并简化定义相关常量，可视同为 <a class="reference internal" href="stock_manager.html#hikyuu.KQuery" title="hikyuu.KQuery"><code class="xref py py-class docutils literal"><span class="pre">KQuery</span></code></a></p>
+<p>简化 <a class="reference internal" href="stock_manager.html#hikyuu.KQuery.KType" title="hikyuu.KQuery.KType"><code class="xref py py-data docutils literal"><span class="pre">KQuery.KType</span></code></a> 枚举值</p>
+<ul class="simple">
+<li>Query.DAY - 日线类型</li>
+<li>Query.WEEK - 周线类型</li>
+<li>Query.MONTH - 月线类型</li>
+<li>Query.QUARTER - 季线类型</li>
+<li>Query.HALFYEAR - 半年线类型</li>
+<li>Query.YEAR - 年线类型</li>
+<li>Query.MIN - 1分钟线类型</li>
+<li>Query.MIN5 - 5分钟线类型</li>
+<li>Query.MIN15 - 15分钟线类型</li>
+<li>Query.MIN30 - 30分钟线类型</li>
+<li>Query.MIN60 - 60分钟线类型</li>
+</ul>
+<p>简化 <a class="reference internal" href="stock_manager.html#hikyuu.KQuery.RecoverType" title="hikyuu.KQuery.RecoverType"><code class="xref py py-data docutils literal"><span class="pre">KQuery.RecoverType</span></code></a> 枚举值</p>
+<ul class="simple">
+<li>Query.NO_RECOVER      - 不复权</li>
+<li>Query.FORWARD         - 前向复权</li>
+<li>Query.BACKWARD        - 后向复权</li>
+<li>Query.EQUAL_FORWARD   - 等比前向复权</li>
+<li>Query.EQUAL_BACKWARD  - 等比后向复权</li>
+</ul>
+</dd></dl>
+
+<dl class="class">
+<dt id="hikyuu.KQuery">
+<em class="property">class </em><code class="descclassname">hikyuu.</code><code class="descname">KQuery</code><a class="headerlink" href="stock_manager.html#hikyuu.KQuery" title="Permalink to this definition">¶</a></dt>
+<dd><p>K线数据查询条件，一般在Python中使用 Query 即可，不用指明 KQuery。</p>
+<dl class="attribute">
+<dt id="hikyuu.KQuery.start">
+<code class="descname">start</code><a class="headerlink" href="stock_manager.html#hikyuu.KQuery.start" title="Permalink to this definition">¶</a></dt>
+<dd><p>起始索引，当按日期查询方式创建时无效，为 constant.null_int64</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="hikyuu.KQuery.end">
+<code class="descname">end</code><a class="headerlink" href="stock_manager.html#hikyuu.KQuery.end" title="Permalink to this definition">¶</a></dt>
+<dd><p>结束索引，当按日期查询方式创建时无效，为 constant.null_int64</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="hikyuu.KQuery.startDatetime">
+<code class="descname">startDatetime</code><a class="headerlink" href="stock_manager.html#hikyuu.KQuery.startDatetime" title="Permalink to this definition">¶</a></dt>
+<dd><p>起始日期，当按索引查询方式创建时无效，为 constant.null_datetime</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="hikyuu.KQuery.endDatetime">
+<code class="descname">endDatetime</code><a class="headerlink" href="stock_manager.html#hikyuu.KQuery.endDatetime" title="Permalink to this definition">¶</a></dt>
+<dd><p>结束日期，当按索引查询方式创建时无效，为 constant.null_datetime</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="hikyuu.KQuery.queryType">
+<code class="descname">queryType</code><a class="headerlink" href="stock_manager.html#hikyuu.KQuery.queryType" title="Permalink to this definition">¶</a></dt>
+<dd><p>查询方式</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="hikyuu.KQuery.kType">
+<code class="descname">kType</code><a class="headerlink" href="stock_manager.html#hikyuu.KQuery.kType" title="Permalink to this definition">¶</a></dt>
+<dd><p>查询的K线类型</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="hikyuu.KQuery.recoverType">
+<code class="descname">recoverType</code><a class="headerlink" href="stock_manager.html#hikyuu.KQuery.recoverType" title="Permalink to this definition">¶</a></dt>
+<dd><p>查询的复权类型</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="hikyuu.KQuery.QueryType">
+<code class="descname">QueryType</code><a class="headerlink" href="stock_manager.html#hikyuu.KQuery.QueryType" title="Permalink to this definition">¶</a></dt>
+<dd><p>查询方式定义</p>
+<ul class="simple">
+<li>DATE  - 按日期方式查询</li>
+<li>INDEX - 按索引方式查询</li>
+</ul>
+</dd></dl>
+
+<dl class="data">
+<dt id="hikyuu.KQuery.KType">
+<code class="descname">KType</code><a class="headerlink" href="stock_manager.html#hikyuu.KQuery.KType" title="Permalink to this definition">¶</a></dt>
+<dd><p>K线类型枚举定义</p>
+<ul class="simple">
+<li>DAY      - 日线类型</li>
+<li>WEEK     - 周线类型</li>
+<li>MONTH    - 月线类型</li>
+<li>QUARTER  - 季线类型</li>
+<li>HALFYEAR - 半年线类型</li>
+<li>YEAR     - 年线类型</li>
+<li>MIN      - 1分钟线类型</li>
+<li>MIN5     - 5分钟线类型</li>
+<li>MIN15    - 15分钟线类型</li>
+<li>MIN30    - 30分钟线类型</li>
+<li>MIN60    - 60分钟线类型</li>
+</ul>
+</dd></dl>
+
+<dl class="data">
+<dt id="hikyuu.KQuery.RecoverType">
+<code class="descname">RecoverType</code><a class="headerlink" href="stock_manager.html#hikyuu.KQuery.RecoverType" title="Permalink to this definition">¶</a></dt>
+<dd><p>K线复权类别枚举定义</p>
+<ul class="simple">
+<li>NO_RECOVER      - 不复权</li>
+<li>FORWARD         - 前向复权</li>
+<li>BACKWARD        - 后向复权</li>
+<li>EQUAL_FORWARD   - 等比前向复权</li>
+<li>EQUAL_BACKWARD  - 等比后向复权</li>
+</ul>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="hikyuu.KQuery.getQueryTypeName">
+<em class="property">static </em><code class="descname">getQueryTypeName</code><span class="sig-paren">(</span><em>queryType</em><span class="sig-paren">)</span><a class="headerlink" href="stock_manager.html#hikyuu.KQuery.getQueryTypeName" title="Permalink to this definition">¶</a></dt>
+<dd><p>获取queryType名称，用于显示输出</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>queryType</strong> (<a class="reference internal" href="stock_manager.html#hikyuu.KQuery.QueryType" title="hikyuu.KQuery.QueryType"><em>KQuery.QueryType</em></a>) &#8211; 查询类型</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="hikyuu.KQuery.getKTypeName">
+<em class="property">static </em><code class="descname">getKTypeName</code><span class="sig-paren">(</span><em>kType</em><span class="sig-paren">)</span><a class="headerlink" href="stock_manager.html#hikyuu.KQuery.getKTypeName" title="Permalink to this definition">¶</a></dt>
+<dd><p>获取KType名称，用于显示输出</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>kType</strong> (<a class="reference internal" href="stock_manager.html#hikyuu.KQuery.KType" title="hikyuu.KQuery.KType"><em>KQuery.KType</em></a>) &#8211; K线类型</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="hikyuu.KQuery.getRecoverTypeName">
+<em class="property">static </em><code class="descname">getRecoverTypeName</code><span class="sig-paren">(</span><em>recoverType</em><span class="sig-paren">)</span><a class="headerlink" href="stock_manager.html#hikyuu.KQuery.getRecoverTypeName" title="Permalink to this definition">¶</a></dt>
+<dd><p>获取recoverType名称，用于显示输出</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>recoverType</strong> (<a class="reference internal" href="stock_manager.html#hikyuu.KQuery.RecoverType" title="hikyuu.KQuery.RecoverType"><em>KQuery.RecoverType</em></a>) &#8211; 复权类型</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="hikyuu.KQuery.getQueryTypeEnum">
+<em class="property">static </em><code class="descname">getQueryTypeEnum</code><span class="sig-paren">(</span><em>queryType</em><span class="sig-paren">)</span><a class="headerlink" href="stock_manager.html#hikyuu.KQuery.getQueryTypeEnum" title="Permalink to this definition">¶</a></dt>
+<dd><p>根据字符串名称获取相应的queryType枚举值</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>queryType</strong> (<em>str</em>) &#8211; 字符串名称，如“DATE”</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="stock_manager.html#hikyuu.KQuery.QueryType" title="hikyuu.KQuery.QueryType">KQuery.QueryType</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="hikyuu.KQuery.getKTypeEnum">
+<em class="property">static </em><code class="descname">getKTypeEnum</code><span class="sig-paren">(</span><em>ktype</em><span class="sig-paren">)</span><a class="headerlink" href="stock_manager.html#hikyuu.KQuery.getKTypeEnum" title="Permalink to this definition">¶</a></dt>
+<dd><p>根据字符串名称，获取相应的枚举值</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>ktype</strong> (<em>str</em>) &#8211; 字符串名称，如“DAY”</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="stock_manager.html#hikyuu.KQuery.KType" title="hikyuu.KQuery.KType">KQuery.KType</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="hikyuu.KQuery.getRecoverTypeEnum">
+<em class="property">static </em><code class="descname">getRecoverTypeEnum</code><span class="sig-paren">(</span><em>recoverType</em><span class="sig-paren">)</span><a class="headerlink" href="stock_manager.html#hikyuu.KQuery.getRecoverTypeEnum" title="Permalink to this definition">¶</a></dt>
+<dd><p>根据字符串名称，获取相应的枚举值</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>recoverType</strong> (<em>str</em>) &#8211; 字符串名称，如“NO_RECOVER”</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="stock_manager.html#hikyuu.KQuery.RecoverType" title="hikyuu.KQuery.RecoverType">KQuery.RecoverType</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="stockmanager-block-stock">
+<h2>StockManager/Block/Stock<a class="headerlink" href="stock_manager.html#stockmanager-block-stock" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="hikyuu.StockManager">
+<em class="property">class </em><code class="descclassname">hikyuu.</code><code class="descname">StockManager</code><a class="headerlink" href="stock_manager.html#hikyuu.StockManager" title="Permalink to this definition">¶</a></dt>
+<dd><p>证券信息管理类</p>
+<dl class="staticmethod">
+<dt id="hikyuu.StockManager.instance">
+<em class="property">static </em><code class="descname">instance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="stock_manager.html#hikyuu.StockManager.instance" title="Permalink to this definition">¶</a></dt>
+<dd><p>获取StockManager单例实例</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="hikyuu.StockManager.init">
+<code class="descname">init</code><span class="sig-paren">(</span><em>self</em>, <em>baseInfoParam</em>, <em>blockParam</em>, <em>kdataParam</em>, <em>preloadParam</em>, <em>hkuParam</em><span class="sig-paren">)</span><a class="headerlink" href="stock_manager.html#hikyuu.StockManager.init" title="Permalink to this definition">¶</a></dt>
+<dd><p>初始化</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>baseInfoParam</strong> (<a class="reference internal" href="base/other_utils.html#hikyuu.Parameter" title="hikyuu.Parameter"><em>Parameter</em></a>) &#8211; 基础信息数据驱动参数</li>
+<li><strong>blockParam</strong> (<a class="reference internal" href="base/other_utils.html#hikyuu.Parameter" title="hikyuu.Parameter"><em>Parameter</em></a>) &#8211; 板块信息数据驱动参数</li>
+<li><strong>kdataParam</strong> (<a class="reference internal" href="base/other_utils.html#hikyuu.Parameter" title="hikyuu.Parameter"><em>Parameter</em></a>) &#8211; K线数据驱动参数</li>
+<li><strong>preloadParam</strong> (<a class="reference internal" href="base/other_utils.html#hikyuu.Parameter" title="hikyuu.Parameter"><em>Parameter</em></a>) &#8211; 预加载参数</li>
+<li><strong>hkuParam</strong> (<a class="reference internal" href="base/other_utils.html#hikyuu.Parameter" title="hikyuu.Parameter"><em>Parameter</em></a>) &#8211; 其他hikyuu参数</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hikyuu.StockManager.tmpdir">
+<code class="descname">tmpdir</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="stock_manager.html#hikyuu.StockManager.tmpdir" title="Permalink to this definition">¶</a></dt>
+<dd><p>获取用于保存零时变量等的临时目录，如未配置则为当前目录 由m_config中的“tmpdir”指定</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="hikyuu.StockManager.getAllMarket">
+<code class="descname">getAllMarket</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="stock_manager.html#hikyuu.StockManager.getAllMarket" title="Permalink to this definition">¶</a></dt>
+<dd><p>获取市场简称列表</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="base/other_utils.html#hikyuu.StringList" title="hikyuu.StringList">StringList</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hikyuu.StockManager.getMarketInfo">
+<code class="descname">getMarketInfo</code><span class="sig-paren">(</span><em>self</em>, <em>market</em><span class="sig-paren">)</span><a class="headerlink" href="stock_manager.html#hikyuu.StockManager.getMarketInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>获取相应的市场信息</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>market</strong> (<em>string</em>) &#8211; 指定的市场标识（市场简称）</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">相应的市场信息，如果相应的市场信息不存在，则返回Null&lt;MarketInfo&gt;()</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="stock_manager.html#hikyuu.MarketInfo" title="hikyuu.MarketInfo">MarketInfo</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hikyuu.StockManager.getStockTypeInfo">
+<code class="descname">getStockTypeInfo</code><span class="sig-paren">(</span><em>self</em>, <em>stk_type</em><span class="sig-paren">)</span><a class="headerlink" href="stock_manager.html#hikyuu.StockManager.getStockTypeInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>获取相应的证券类型详细信息</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>stk_type</strong> (<em>int</em>) &#8211; 证券类型，参见： <a class="reference internal" href="base/constant.html#hikyuu.constant" title="hikyuu.constant"><code class="xref py py-data docutils literal"><span class="pre">constant</span></code></a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">对应的证券类型信息，如果不存在，则返回Null&lt;StockTypeInfo&gt;()</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="stock_manager.html#hikyuu.StockTypeInfo" title="hikyuu.StockTypeInfo">StockTypeInfo</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hikyuu.StockManager.size">
+<code class="descname">size</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="stock_manager.html#hikyuu.StockManager.size" title="Permalink to this definition">¶</a></dt>
+<dd><p>获取证券数量</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="hikyuu.StockManager.getStock">
+<code class="descname">getStock</code><span class="sig-paren">(</span><em>self</em>, <em>querystr</em><span class="sig-paren">)</span><a class="headerlink" href="stock_manager.html#hikyuu.StockManager.getStock" title="Permalink to this definition">¶</a></dt>
+<dd><p>根据&#8221;市场简称证券代码&#8221;获取对应的证券实例</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>querystr</strong> (<em>str</em>) &#8211; 格式：“市场简称证券代码”，如&#8221;sh000001&#8221;</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">对应的证券实例，如果实例不存在，则Null&lt;Stock&gt;()，不抛出异常</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="stock_manager.html#hikyuu.Stock" title="hikyuu.Stock">Stock</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hikyuu.StockManager.__getitem__">
+<code class="descname">__getitem__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="stock_manager.html#hikyuu.StockManager.__getitem__" title="Permalink to this definition">¶</a></dt>
+<dd><p>同 getStock</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="hikyuu.StockManager.getBlock">
+<code class="descname">getBlock</code><span class="sig-paren">(</span><em>self</em>, <em>category</em>, <em>name</em><span class="sig-paren">)</span><a class="headerlink" href="stock_manager.html#hikyuu.StockManager.getBlock" title="Permalink to this definition">¶</a></dt>
+<dd><p>获取预定义的板块</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>category</strong> (<em>str</em>) &#8211; 板块分类</li>
+<li><strong>name</strong> (<em>str</em>) &#8211; 板块名称</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">板块，如找不到返回空Block</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="stock_manager.html#hikyuu.Block" title="hikyuu.Block">Block</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hikyuu.StockManager.getBlockList">
+<code class="descname">getBlockList</code><span class="sig-paren">(</span><em>self</em><span class="optional">[</span>, <em>category</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="stock_manager.html#hikyuu.StockManager.getBlockList" title="Permalink to this definition">¶</a></dt>
+<dd><p>获取指定分类的板块列表</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>category</strong> (<em>str</em>) &#8211; 板块分类</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">板块列表</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="base/other_utils.html#hikyuu.BlockList" title="hikyuu.BlockList">BlockList</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hikyuu.StockManager.getTradingCalendar">
+<code class="descname">getTradingCalendar</code><span class="sig-paren">(</span><em>self</em>, <em>query</em><span class="optional">[</span>, <em>market='SH'</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="stock_manager.html#hikyuu.StockManager.getTradingCalendar" title="Permalink to this definition">¶</a></dt>
+<dd><p>获取指定市场的交易日日历</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>query</strong> (<a class="reference internal" href="stock_manager.html#hikyuu.KQuery" title="hikyuu.KQuery"><em>KQuery</em></a>) &#8211; Query查询条件</li>
+<li><strong>market</strong> (<em>str</em>) &#8211; 市场简称</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">日期列表</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="base/other_utils.html#hikyuu.DatetimeList" title="hikyuu.DatetimeList">DatetimeList</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hikyuu.StockManager.addTempCsvStock">
+<code class="descname">addTempCsvStock</code><span class="sig-paren">(</span><em>self</em>, <em>code</em>, <em>day_filename</em>, <em>min_filename</em><span class="optional">[</span>, <em>tick=0.01</em>, <em>tickValue=0.01</em>, <em>precision=2</em>, <em>minTradeNumber = 1</em>, <em>maxTradeNumber=1000000</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="stock_manager.html#hikyuu.StockManager.addTempCsvStock" title="Permalink to this definition">¶</a></dt>
+<dd><p>从CSV文件（K线数据）增加临时的Stock，可用于只有CSV格式的K线数据时，进行临时测试。</p>
+<p>CSV文件第一行为标题，需含有 Datetime（或Date、日期）、OPEN（或开盘价）、HIGH（或最高价）、LOW（或最低价）、CLOSE（或收盘价）、AMOUNT（或成交金额）、VOLUME（或VOL、COUNT、成交量）。</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>code</strong> (<em>str</em>) &#8211; 自行编号的证券代码，不能和已有的Stock相同，否则将返回Null&lt;Stock&gt;</li>
+<li><strong>day_filename</strong> (<em>str</em>) &#8211; 日线CSV文件名</li>
+<li><strong>min_filename</strong> (<em>str</em>) &#8211; 分钟线CSV文件名</li>
+<li><strong>tick</strong> (<em>float</em>) &#8211; 最小跳动量，默认0.01</li>
+<li><strong>tickValue</strong> (<em>float</em>) &#8211; 最小跳动量价值，默认0.01</li>
+<li><strong>precision</strong> (<em>int</em>) &#8211; 价格精度，默认2</li>
+<li><strong>minTradeNumber</strong> (<em>int</em>) &#8211; 单笔最小交易量，默认1</li>
+<li><strong>maxTradeNumber</strong> (<em>int</em>) &#8211; 单笔最大交易量，默认1000000</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">加入的Stock</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="stock_manager.html#hikyuu.Stock" title="hikyuu.Stock">Stock</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hikyuu.StockManager.removeTempCsvStock">
+<code class="descname">removeTempCsvStock</code><span class="sig-paren">(</span><em>self</em>, <em>code</em><span class="sig-paren">)</span><a class="headerlink" href="stock_manager.html#hikyuu.StockManager.removeTempCsvStock" title="Permalink to this definition">¶</a></dt>
+<dd><p>移除增加的临时Stock</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>code</strong> (<em>str</em>) &#8211; 创建时自定义的编码</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="hikyuu.Stock">
+<em class="property">class </em><code class="descclassname">hikyuu.</code><code class="descname">Stock</code><a class="headerlink" href="stock_manager.html#hikyuu.Stock" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stock基类</p>
+<dl class="attribute">
+<dt>
+<code class="descname">id : 内部id，一般用于作为map的键值使用</code></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">market : 获取所属市场简称，市场简称是市场的唯一标识</code></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">code : 获取证券代码</code></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">market_code : 市场简称+证券代码，如: sh000001</code></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">name : 获取证券名称</code></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="hikyuu.Stock.type">
+<code class="descname">type</code><a class="headerlink" href="stock_manager.html#hikyuu.Stock.type" title="Permalink to this definition">¶</a></dt>
+<dd><p>获取证券类型，参见：<a class="reference internal" href="base/constant.html#hikyuu.constant" title="hikyuu.constant"><code class="xref py py-data docutils literal"><span class="pre">constant</span></code></a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">valid : 该证券当前是否有效</code></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">startDatetime : 证券起始日期</code></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">lastDatetime : 证券最后日期</code></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">tick : 最小跳动量</code></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">tickValue : 最小跳动量价值</code></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">unit : 每单位价值 = tickValue / tick</code></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">precision : 价格精度</code></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">atom : 最小交易数量，同minTradeNumber</code></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">minTradeNumber : 最小交易数量</code></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">maxTradeNumber : 最大交易数量</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="hikyuu.Stock.isNull">
+<code class="descname">isNull</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="stock_manager.html#hikyuu.Stock.isNull" title="Permalink to this definition">¶</a></dt>
+<dd><p>是否为Null</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hikyuu.Stock.getKData">
+<code class="descname">getKData</code><span class="sig-paren">(</span><em>self</em>, <em>query</em><span class="sig-paren">)</span><a class="headerlink" href="stock_manager.html#hikyuu.Stock.getKData" title="Permalink to this definition">¶</a></dt>
+<dd><p>获取K线数据</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>query</strong> (<a class="reference internal" href="stock_manager.html#hikyuu.Query" title="hikyuu.Query"><em>Query</em></a>) &#8211; 查询条件</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">满足查询条件的K线数据</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="base/datatype.html#hikyuu.KData" title="hikyuu.KData">KData</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hikyuu.Stock.getCount">
+<code class="descname">getCount</code><span class="sig-paren">(</span><em>self</em><span class="optional">[</span>, <em>ktype=Query.DAY</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="stock_manager.html#hikyuu.Stock.getCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>获取不同类型K线数据量</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>ktype</strong> (<a class="reference internal" href="stock_manager.html#hikyuu.KQuery.KType" title="hikyuu.KQuery.KType"><em>KQuery.KType</em></a>) &#8211; K线数据类别</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">K线记录数</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hikyuu.Stock.getMarketValue">
+<code class="descname">getMarketValue</code><span class="sig-paren">(</span><em>self</em>, <em>datetime</em>, <em>ktype</em><span class="sig-paren">)</span><a class="headerlink" href="stock_manager.html#hikyuu.Stock.getMarketValue" title="Permalink to this definition">¶</a></dt>
+<dd><p>获取指定时刻的市值，即小于等于指定时刻的最后一条记录的收盘价</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>datetime</strong> (<a class="reference internal" href="base/datatype.html#hikyuu.Datetime" title="hikyuu.Datetime"><em>Datetime</em></a>) &#8211; 指定时刻</li>
+<li><strong>ktype</strong> (<a class="reference internal" href="stock_manager.html#hikyuu.KQuery.KType" title="hikyuu.KQuery.KType"><em>KQuery.KType</em></a>) &#8211; K线数据类别</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">指定时刻的市值</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hikyuu.Stock.getKRecord">
+<code class="descname">getKRecord</code><span class="sig-paren">(</span><em>self</em>, <em>pos</em><span class="optional">[</span>, <em>ktype=Query.DAY</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="stock_manager.html#hikyuu.Stock.getKRecord" title="Permalink to this definition">¶</a></dt>
+<dd><p>获取指定索引的K线数据记录，未作越界检查</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>pos</strong> (<em>int</em>) &#8211; 指定的索引位置</li>
+<li><strong>ktype</strong> (<a class="reference internal" href="stock_manager.html#hikyuu.KQuery.KType" title="hikyuu.KQuery.KType"><em>KQuery.KType</em></a>) &#8211; K线数据类别</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">K线记录</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="base/datatype.html#hikyuu.KRecord" title="hikyuu.KRecord">KRecord</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hikyuu.Stock.getKRecordByDate">
+<code class="descname">getKRecordByDate</code><span class="sig-paren">(</span><em>self</em>, <em>datetime</em><span class="optional">[</span>, <em>ktype=Query.DAY</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="stock_manager.html#hikyuu.Stock.getKRecordByDate" title="Permalink to this definition">¶</a></dt>
+<dd><p>根据数据类型（日线/周线等），获取指定时刻的KRecord</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>datetime</strong> (<a class="reference internal" href="base/datatype.html#hikyuu.Datetime" title="hikyuu.Datetime"><em>Datetime</em></a>) &#8211; 指定时刻</li>
+<li><strong>ktype</strong> (<a class="reference internal" href="stock_manager.html#hikyuu.KQuery.KType" title="hikyuu.KQuery.KType"><em>KQuery.KType</em></a>) &#8211; K线数据类别</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">K线记录</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="base/datatype.html#hikyuu.KRecord" title="hikyuu.KRecord">KRecord</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hikyuu.Stock.getKRecordList">
+<code class="descname">getKRecordList</code><span class="sig-paren">(</span><em>self</em>, <em>start</em>, <em>end</em>, <em>ktype</em><span class="sig-paren">)</span><a class="headerlink" href="stock_manager.html#hikyuu.Stock.getKRecordList" title="Permalink to this definition">¶</a></dt>
+<dd><p>获取K线记录 [start, end)，一般不直接使用，用getKData替代</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>start</strong> (<em>int</em>) &#8211; 起始位置</li>
+<li><strong>end</strong> (<em>int</em>) &#8211; 结束位置</li>
+<li><strong>ktype</strong> (<a class="reference internal" href="stock_manager.html#hikyuu.KQuery.KType" title="hikyuu.KQuery.KType"><em>KQuery.KType</em></a>) &#8211; K线类别</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">K线记录列表</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="base/other_utils.html#hikyuu.KRecordList" title="hikyuu.KRecordList">KRecordList</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hikyuu.Stock.getDatetimeList">
+<code class="descname">getDatetimeList</code><span class="sig-paren">(</span><em>self</em>, <em>query</em><span class="sig-paren">)</span><a class="headerlink" href="stock_manager.html#hikyuu.Stock.getDatetimeList" title="Permalink to this definition">¶</a></dt>
+<dd><p>获取日期列表</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>query</strong> (<a class="reference internal" href="stock_manager.html#hikyuu.Query" title="hikyuu.Query"><em>Query</em></a>) &#8211; 查询条件</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="base/other_utils.html#hikyuu.DatetimeList" title="hikyuu.DatetimeList">DatetimeList</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">getDatetimeList</code><span class="sig-paren">(</span><em>self</em>, <em>start</em>, <em>end</em>, <em>ktype</em><span class="sig-paren">)</span></dt>
+<dd><p>获取日期列表</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>start</strong> (<em>int</em>) &#8211; 起始位置</li>
+<li><strong>end</strong> (<em>ind</em>) &#8211; 结束位置</li>
+<li><strong>ktype</strong> (<a class="reference internal" href="stock_manager.html#hikyuu.KQuery.KType" title="hikyuu.KQuery.KType"><em>KQuery.KType</em></a>) &#8211; K线类型</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="base/other_utils.html#hikyuu.DatetimeList" title="hikyuu.DatetimeList">DatetimeList</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hikyuu.Stock.getWeight">
+<code class="descname">getWeight</code><span class="sig-paren">(</span><em>self</em><span class="optional">[</span>, <em>start</em>, <em>end</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="stock_manager.html#hikyuu.Stock.getWeight" title="Permalink to this definition">¶</a></dt>
+<dd><p>获取指定时间段[start,end)内的权息信息。未指定起始、结束时刻时，获取全部权息记录。</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>start</strong> (<a class="reference internal" href="base/datatype.html#hikyuu.Datetime" title="hikyuu.Datetime"><em>Datetime</em></a>) &#8211; 起始时刻</li>
+<li><strong>end</strong> (<a class="reference internal" href="base/datatype.html#hikyuu.Datetime" title="hikyuu.Datetime"><em>Datetime</em></a>) &#8211; 结束时刻</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="stock_manager.html#hikyuu.StockWeightList" title="hikyuu.StockWeightList">StockWeightList</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hikyuu.Stock.realtimeUpdate">
+<code class="descname">realtimeUpdate</code><span class="sig-paren">(</span><em>self</em>, <em>krecord</em><span class="sig-paren">)</span><a class="headerlink" href="stock_manager.html#hikyuu.Stock.realtimeUpdate" title="Permalink to this definition">¶</a></dt>
+<dd><p>（临时函数）只用于更新内存缓存中的日线数据</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>krecord</strong> (<a class="reference internal" href="base/datatype.html#hikyuu.KRecord" title="hikyuu.KRecord"><em>KRecord</em></a>) &#8211; 新增的实时K线记录</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hikyuu.Stock.loadKDataToBuffer">
+<code class="descname">loadKDataToBuffer</code><span class="sig-paren">(</span><em>self</em>, <em>ktype</em><span class="sig-paren">)</span><a class="headerlink" href="stock_manager.html#hikyuu.Stock.loadKDataToBuffer" title="Permalink to this definition">¶</a></dt>
+<dd><p>将指定类别的K线数据加载至内存缓存</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>ktype</strong> (<a class="reference internal" href="stock_manager.html#hikyuu.KQuery.KType" title="hikyuu.KQuery.KType"><em>KQuery.KType</em></a>) &#8211; K线类型</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hikyuu.Stock.releaseKDataBuffer">
+<code class="descname">releaseKDataBuffer</code><span class="sig-paren">(</span><em>self</em>, <em>ktype</em><span class="sig-paren">)</span><a class="headerlink" href="stock_manager.html#hikyuu.Stock.releaseKDataBuffer" title="Permalink to this definition">¶</a></dt>
+<dd><p>释放指定类别的内存K线数据</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>ktype</strong> (<a class="reference internal" href="stock_manager.html#hikyuu.KQuery.KType" title="hikyuu.KQuery.KType"><em>KQuery.KType</em></a>) &#8211; K线类型</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="hikyuu.Block">
+<em class="property">class </em><code class="descclassname">hikyuu.</code><code class="descname">Block</code><a class="headerlink" href="stock_manager.html#hikyuu.Block" title="Permalink to this definition">¶</a></dt>
+<dd><p>板块类，可视为证券的容器</p>
+<dl class="attribute">
+<dt>
+<code class="descname">category : 板块分类</code></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">name : 板块名称</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="hikyuu.Block.size">
+<code class="descname">size</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="stock_manager.html#hikyuu.Block.size" title="Permalink to this definition">¶</a></dt>
+<dd><p>包含的证券数量</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="hikyuu.Block.empty">
+<code class="descname">empty</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="stock_manager.html#hikyuu.Block.empty" title="Permalink to this definition">¶</a></dt>
+<dd><p>是否为空</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="hikyuu.Block.get">
+<code class="descname">get</code><span class="sig-paren">(</span><em>self</em>, <em>market_code</em><span class="sig-paren">)</span><a class="headerlink" href="stock_manager.html#hikyuu.Block.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>根据&#8221;市场简称证券代码&#8221;获取对应的证券实例</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>querystr</strong> (<em>str</em>) &#8211; 格式：“市场简称证券代码”，如&#8221;sh000001&#8221;</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">对应的证券实例，如果实例不存在，则Null&lt;Stock&gt;()，不抛出异常</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="stock_manager.html#hikyuu.Stock" title="hikyuu.Stock">Stock</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hikyuu.Block.add">
+<code class="descname">add</code><span class="sig-paren">(</span><em>self</em>, <em>stock</em><span class="sig-paren">)</span><a class="headerlink" href="stock_manager.html#hikyuu.Block.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>加入指定的证券</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>stock</strong> (<a class="reference internal" href="stock_manager.html#hikyuu.Stock" title="hikyuu.Stock"><em>Stock</em></a>) &#8211; 待加入的证券</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">是否成功加入</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">add</code><span class="sig-paren">(</span><em>self</em>, <em>market_code</em><span class="sig-paren">)</span></dt>
+<dd><p>根据&#8221;市场简称证券代码&#8221;加入指定的证券</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>market_code</strong> (<em>str</em>) &#8211; 市场简称证券代码</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">是否成功加入</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hikyuu.Block.remove">
+<code class="descname">remove</code><span class="sig-paren">(</span><em>self</em>, <em>stock</em><span class="sig-paren">)</span><a class="headerlink" href="stock_manager.html#hikyuu.Block.remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>移除指定证券</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>stock</strong> (<a class="reference internal" href="stock_manager.html#hikyuu.Stock" title="hikyuu.Stock"><em>Stock</em></a>) &#8211; 指定的证券</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">是否成功</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">remove</code><span class="sig-paren">(</span><em>self</em>, <em>market_code</em><span class="sig-paren">)</span></dt>
+<dd><p>移除指定证券</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>market_code</strong> (<em>str</em>) &#8211; 市场简称证券代码</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">是否成功</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hikyuu.Block.clear">
+<code class="descname">clear</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="stock_manager.html#hikyuu.Block.clear" title="Permalink to this definition">¶</a></dt>
+<dd><p>移除包含的所有证券</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="hikyuu.Block.__len__">
+<code class="descname">__len__</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="stock_manager.html#hikyuu.Block.__len__" title="Permalink to this definition">¶</a></dt>
+<dd><p>包含的证券数量</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="hikyuu.Block.__getitem__">
+<code class="descname">__getitem__</code><span class="sig-paren">(</span><em>self</em>, <em>market_code</em><span class="sig-paren">)</span><a class="headerlink" href="stock_manager.html#hikyuu.Block.__getitem__" title="Permalink to this definition">¶</a></dt>
+<dd><p>根据&#8221;市场简称证券代码&#8221;获取对应的证券实例</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>querystr</strong> (<em>str</em>) &#8211; 格式：“市场简称证券代码”，如&#8221;sh000001&#8221;</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">对应的证券实例，如果实例不存在，则Null&lt;Stock&gt;()，不抛出异常</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="stock_manager.html#hikyuu.Stock" title="hikyuu.Stock">Stock</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="id2">
+<h2>其它证券信息定义<a class="headerlink" href="stock_manager.html#id2" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="hikyuu.StockTypeInfo">
+<em class="property">class </em><code class="descclassname">hikyuu.</code><code class="descname">StockTypeInfo</code><a class="headerlink" href="stock_manager.html#hikyuu.StockTypeInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>股票类型详情记录</p>
+<dl class="attribute">
+<dt>
+<code class="descname">type : 证券类型</code></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">description : 描述信息</code></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">tick : 最小跳动量</code></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">tickValue : 每一个tick价格</code></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">unit : 每最小变动量价格，即单位价格 = tickValue/tick</code></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">precision : 价格精度</code></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">minTradeNumber : 每笔最小交易量</code></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">maxTradeNumber : 每笔最大交易量</code></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="hikyuu.StockWeight">
+<em class="property">class </em><code class="descclassname">hikyuu.</code><code class="descname">StockWeight</code><a class="headerlink" href="stock_manager.html#hikyuu.StockWeight" title="Permalink to this definition">¶</a></dt>
+<dd><p>权息记录</p>
+<dl class="attribute">
+<dt>
+<code class="descname">datetime : 权息日期</code></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">countAsGift : 每10股送X股</code></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">countForSell : 每10股配X股</code></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">priceForSell : 配股价</code></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">bonus : 每10股红利</code></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">increasement : 每10股转增X股</code></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">totalCount : 总股本（万股）</code></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">freeCount : 流通股（万股）</code></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="hikyuu.StockWeightList">
+<em class="property">class </em><code class="descclassname">hikyuu.</code><code class="descname">StockWeightList</code><a class="headerlink" href="stock_manager.html#hikyuu.StockWeightList" title="Permalink to this definition">¶</a></dt>
+<dd><p>std::vector&lt;StockWeight&gt; 包装，见 <a class="reference internal" href="stock_manager.html#hikyuu.StockWeight" title="hikyuu.StockWeight"><code class="xref py py-class docutils literal"><span class="pre">StockWeight</span></code></a></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="hikyuu.MarketInfo">
+<em class="property">class </em><code class="descclassname">hikyuu.</code><code class="descname">MarketInfo</code><a class="headerlink" href="stock_manager.html#hikyuu.MarketInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>市场信息记录</p>
+<dl class="attribute">
+<dt>
+<code class="descname">market : 市场简称（如：沪市“SH”, 深市“SZ”）</code></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">name : 市场全称</code></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">description :描述说明</code></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">code : 该市场对应的主要指数，用于获取交易日历</code></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">lastDate : 该市场K线数据最后交易日期</code></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="indicator/index.html" class="btn btn-neutral float-right" title="技术指标" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="base/other_utils.html" class="btn btn-neutral" title="杂项或辅助" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, fasiondog，&lt;a href=&#34;http://hikyuu.org/&#34;&gt;Hikyuu&lt;/a&gt;.
+      
+        <span class="commit">
+          Revision <code>a0b7388d</code>.
+        </span>
+      
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="index.html">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="http://readthedocs.org/projects/hikyuu/downloads/htmlzip/latest/">htmlzip</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="http://readthedocs.org/projects/hikyuu/?fromdocs=hikyuu">Project Home</a>
+          </dd>
+          <dd>
+            <a href="http://readthedocs.org/builds/hikyuu/?fromdocs=hikyuu">Builds</a>
+          </dd>
+      </dl>
+      <hr/>
+      Free document hosting provided by <a href="http://www.readthedocs.org">Read the Docs</a>.
+
+    </div>
+  </div>
+
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0.3',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="https://media.readthedocs.org/javascript/jquery/jquery-2.0.3.min.js"></script>
+      <script type="text/javascript" src="https://media.readthedocs.org/javascript/jquery/jquery-migrate-1.2.1.min.js"></script>
+      <script type="text/javascript" src="https://media.readthedocs.org/javascript/underscore.js"></script>
+      <script type="text/javascript" src="https://media.readthedocs.org/javascript/doctools.js"></script>
+      <script type="text/javascript" src="https://media.readthedocs.org/javascript/readthedocs-doc-embed.js"></script>
+
+  
+
+  
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
