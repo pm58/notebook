@@ -1,22 +1,31 @@
 
-pip install -r 见目录对应txt
+安装kivy：
+下载kivy3.dmg拷贝kivy3.app到应用程序目录，改名kivy.app
 
-kivy环境部署：quantaxis+rqalpha+abupy+hikyuu+abupy
-python -m pip install -r kivy.txt 或 pip install -r kivy.txt 部署环境
-开启jupyter notebook 或 notebook
+建立 kivy.app 终端关联
 
-rqalpha 环境部署：rqalpha+funcat+tushare
-python -m pip install -r rqalpha.txt 或 pip install -r rqalpha.txt 部署环境
-开启jupyter notebook 或 notebook
+ln -s /Applications/Kivy.app/Contents/Resources/script  /usr/local/bin/kivy
 
-quantaxis环境部署：quantaxis+tushare+pytdx
-python -m pip install -r quantaxis.txt 或 pip install -r quantaxis.txt 部署环境
-开启jupyter notebook 或 notebook
+使用brew安装ta-lib库和mongodb：brew.sh去参考
+安装brew管理：
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-hiykuu环境部署：
-python -m pip install -r hikyuu.txt 或 pip install -r hikyuu.txt 部署环境
-开启jupyter notebook 或 notebook
+安装talib库：
+brew install ta-lib
 
-abupy环境部署：
-python -m pip install -r abupy.txt 或 pip install -r abupy.txt 部署环境
-开启jupyter notebook 或 notebook
+安装mongodb数据库服务器环境：
+brew install mongodb
+
+开启终端安装配置环境
+kivy后输入import kivy测试kivy环境是否正常。正常后下面配置
+
+终端kivy环境配置：
+kivy -m pip install -r kivy-m_pip_freeze.txt
+
+kivy -m jupyter notebook 或 kivy -m jupyterlab进入web后开启终端
+
+web终端虚拟环境python配置：
+python -m pip install -r python-m_pip_freeze.txt
+
+web终端环境配置：
+pip install -r pip_freeze.txt
