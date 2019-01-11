@@ -1,1 +1,0 @@
-#hikyuu_examples
